@@ -24,4 +24,19 @@ class Carnival
   def admit(attendee)
     @attendees << attendee
   end
+
+  #returns hash with keys being ride objects & values being
+  #attendee objects that match their respective interests
+  def attendees_by_ride_interest
+    attendee_ride_interest = {}
+    ride_interest_match = @attendees.find_all do |attendee|
+      @rides.flat_map do |ride|
+        if attendee.interests == ride.name
+          hash[ride] = attendee
+        end
+      end
+    end
+    # require 'pry'; binding.pry
+    attendee_ride_interest[:rides] = ride_interest_match
+  end
 end
