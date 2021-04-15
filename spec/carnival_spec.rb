@@ -42,8 +42,21 @@ RSpec.describe Carnival do
     sally.add_interest('Scrambler')
 
     #I know it's supposed to have an array of ride objects for these tests,
-    #but couldn't quite figure it out and wanted to try iteration 3, currently 10:23 am
+    #but couldn't quite figure it out after a long time and wanted to try iteration 3, currently 10:23 am
     expect(jeffco_fair.recommend_rides(bob)).to eq(['Ferris Wheel', 'Bumper Cars'])
     expect(jeffco_fair.recommend_rides(sally)).to eq(['Scrambler'])
+  end
+
+  it 'has attendees'do
+    jeffco_fair = Carnival.new("Jefferson County Fair")
+    ferris_wheel = Ride.new({name: 'Ferris Wheel', cost: 0})
+    bumper_cars = Ride.new({name: 'Bumper Cars', cost: 10})
+    scrambler = Ride.new({name: 'Scrambler', cost: 15})
+
+    jeffco_fair.add_ride(ferris_wheel)
+    jeffco_fair.add_ride(bumper_cars)
+    jeffco_fair.add_ride(scrambler)
+
+    expect(jeffco_fair.attendees).to eq([])
   end
 end
